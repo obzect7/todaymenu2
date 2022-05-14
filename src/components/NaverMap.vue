@@ -7,16 +7,6 @@
       :initLayers="initLayers"
       @load="onLoad"
     >
-      <naver-info-window
-        class="info-window"
-        @load="onWindowLoad"
-        :isOpen="info"
-        :marker="marker"
-      >
-        <div class="info-window-container">
-          <h1>{{ hello }}</h1>
-        </div>
-      </naver-info-window>
       <naver-marker
         v-for="(item, index) in markerList"
         :key="index"
@@ -26,6 +16,16 @@
         @load="onMarkerLoaded"
       >
       </naver-marker>
+      <naver-info-window
+          class="info-window"
+          @load="onWindowLoad"
+          :isOpen="info"
+          :marker="marker"
+      >
+        <div class="info-window-container">
+          <h1>{{ hello }}</h1>
+        </div>
+      </naver-info-window>
     </naver-maps>
   </div>
 </template>
@@ -46,8 +46,8 @@ export default {
       map: null,
       isCTT: false,
       mapOptions: {
-        lat: 37,
-        lng: 127,
+        lat: 35.2203899,
+        lng: 128.6805195,
         zoom: 16,
         zoomControl: true,
         zoomControlOptions: { position: "TOP_RIGHT" },
@@ -74,12 +74,14 @@ export default {
     onLoad(vue) {
       this.map = vue;
     },
-    onWindowLoad(that) {},
+    onWindowLoad() {},
     onMarkerClicked(event) {
+      console.log('event===',event);
       this.info = !this.info;
     },
     onMarkerLoaded(vue) {
       this.marker = vue.marker;
+
     },
     getMyposition() {
       return new Promise(function (resolve, reject) {
@@ -103,8 +105,17 @@ export default {
     //    // this.textContent = err.message;
     //   console.log('error == ',err)
     // })
-    const getPosition = this.getMyposition();
-    console.log("getPosition == ", getPosition);
+    // const getPosition = this.getMyposition();
+    // console.log("getPosition == ", getPosition);
+    // this.getMyposition()
+    //     .then((position) => {
+    //       console.log(position);
+    //       // this.mapOptions.lat = position.coords.latitude;
+    //       // this.mapOptions.lng = position.coords.longitude;
+    //     })
+    //     .catch((err) => {
+    //       console.error(err.message);
+    //     });
   },
 };
 </script>

@@ -9,7 +9,7 @@
     <van-tabbar-item name="comment" icon="comment-o" replace to="/favorite"
       >출입내역</van-tabbar-item
     >
-    <van-tabbar-item name="friends" icon="friends-o" replace to="/login"
+    <van-tabbar-item name="friends" icon="friends-o" replace to="/myPage"
       >My오메</van-tabbar-item
     >
   </van-tabbar>
@@ -20,7 +20,7 @@ export default {
   name: "Navbar",
   data() {
     return {
-      active: "",
+      active: false,
     };
   },
   methods: {},
