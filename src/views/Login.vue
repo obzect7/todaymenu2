@@ -38,11 +38,9 @@ export default {
     };
   },
   created() {
-    storage.set("UserInfo", "");
-
-    // if (storage.get("UserInfo")) {
-    //   this.user = storage.get("UserInfo");
-    // }
+    if (storage.get("UserInfo")) {
+      this.user = storage.get("UserInfo");
+    }
   },
   methods: {
     // 로그인 기능
