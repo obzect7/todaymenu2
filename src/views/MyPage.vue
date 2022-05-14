@@ -44,15 +44,15 @@ export default {
         this.$router.replace("/login");
       } else {
         this.$store
-          .dispatch("LogOut")
-          .then(() => {
-            console.log("로그아웃 진행");
-            this.$router.go(); // 페이지 새로고침
-          })
-          .catch((error) => {
-            // 오류 메시지, 구성 요소 프롬프트
-            this.$toast({ message: error, duration: 1000 });
-          });
+            .dispatch("LogOut")
+            .then(() => {
+              console.log("로그아웃 진행");
+              this.$router.go(); // 페이지 새로고침
+            })
+            .catch((error) => {
+              // 오류 메시지, 구성 요소 프롬프트
+              this.$toast({ message: error, duration: 1000 });
+            });
       }
     },
   },
