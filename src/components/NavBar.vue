@@ -1,5 +1,5 @@
 <template>
-  <van-tabbar v-model="active">
+  <van-tabbar>
     <van-tabbar-item name="home" icon="wap-home" replace to="/home"
       >홈</van-tabbar-item
     >

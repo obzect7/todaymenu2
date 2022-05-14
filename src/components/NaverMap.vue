@@ -17,10 +17,10 @@
       >
       </naver-marker>
       <naver-info-window
-          class="info-window"
-          @load="onWindowLoad"
-          :isOpen="info"
-          :marker="marker"
+        class="info-window"
+        @load="onWindowLoad"
+        :isOpen="info"
+        :marker="marker"
       >
         <div class="info-window-container">
           <h1>{{ hello }}</h1>
@@ -42,6 +42,8 @@ export default {
       info: false,
       marker: null,
       markerList: [],
+      test1: 1,
+      test2: 2,
       count: 1,
       map: null,
       isCTT: false,
@@ -76,12 +78,11 @@ export default {
     },
     onWindowLoad() {},
     onMarkerClicked(event) {
-      console.log('event===',event);
+      console.log("event===", event);
       this.info = !this.info;
     },
     onMarkerLoaded(vue) {
       this.marker = vue.marker;
-
     },
     getMyposition() {
       return new Promise(function (resolve, reject) {
@@ -96,26 +97,15 @@ export default {
   },
 
   created() {
-    // get position
-    // navigator.geolocation.getCurrentPosition(pos => {
-    //   console.log('pos === ',pos);
-    //   this.mapOptions.lat = pos.coords.latitude;
-    //   this.mapOptions.lng = pos.coords.longitude;
-    // }, err => {
-    //    // this.textContent = err.message;
-    //   console.log('error == ',err)
-    // })
-    // const getPosition = this.getMyposition();
-    // console.log("getPosition == ", getPosition);
-    // this.getMyposition()
-    //     .then((position) => {
-    //       console.log(position);
-    //       // this.mapOptions.lat = position.coords.latitude;
-    //       // this.mapOptions.lng = position.coords.longitude;
-    //     })
-    //     .catch((err) => {
-    //       console.error(err.message);
-    //     });
+    navigator.geolocation.getCurrentPosition((position) => {
+      // doSomething(position.coords.latitude, position.coords.longitude);
+      console.log("내 위도 경도? === ", position.coords);
+      this.test1 = position.coords.latitude;
+      this.test2 = position.coords.longitude;
+      console.log("test1 == ", this.test1);
+
+      // this.$refs.naver.updateBy(position.coords, 16);
+    });
   },
 };
 </script>

@@ -7,12 +7,11 @@
 
 <script>
 import NavBar from "@/components/NavBar";
-import NaverMap from "@/components/NaverMap";
+import naverMap from "@/components/NaverMap";
 export default {
-  name: "Home.vue",
   components: {
     NavBar,
-    NaverMap,
+    naverMap,
   },
 };
 </script>
