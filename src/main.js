@@ -7,6 +7,7 @@ import Vant from "vant";
 import "vant/lib/index.css";
 import naver from "vue-naver-maps";
 import VueGeolocationApi from "vue-geolocation-api";
+import KakaoSdk from "vue-kakao-sdk"
 
 //use 한다는 것은 전역 변수로 쓰겠다는 것과 비슷한 느낌임.
 Vue.use(Vant)
@@ -16,7 +17,9 @@ Vue.use(Vant)
     subModules: "", // 서브모듈 (선택)
   })
   .use(router)
-  .use(VueGeolocationApi);
+  .use(VueGeolocationApi)
+    .use(KakaoSdk, { apiKey : "6528dbc229faea9bbd97529ef1be8b9a"})
+
 
 /**
  * main.js
