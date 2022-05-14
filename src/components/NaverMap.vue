@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       width: 360,
-      height: 800,
+      height: 600,
       info: false,
       marker: null,
       markerList: [],
