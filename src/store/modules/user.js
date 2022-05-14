@@ -43,17 +43,18 @@ const user = {
       });
     },
     // 정상적으로 종료
-    Logout({ commit, state }) {
-      // return new Promise((resolve, reject) => {
-      //   logout(state.token)
-      //     .then(() => {
-      commit("SET_TOKEN", "");
-      // resolve();
-      //     })
-      //     .catch((error) => {
-      //       reject(error);
-      //     });
-      // });
+    LogOut({ commit, state }) {
+      return new Promise((resolve, reject) => {
+        logout(state.token)
+          .then(() => {
+            commit("SET_TOKEN", "");
+            commit("SET_USER_INFO", "");
+            resolve();
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
     },
     /* // 사용자 정보 가져오기
     GetInfo({ commit, state }) {
