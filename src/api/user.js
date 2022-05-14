@@ -25,3 +25,11 @@ export function logout() {
     method: "post",
   });
 }
+
+export function linkLogin(data) {
+  return request({
+    url: "/account/add",
+    method: "post",
+    data,
+  });
+}

@@ -1,6 +1,6 @@
 import storage from "@/utils/storage";
 import { setCookie } from "@/utils/cookie";
-import { getUserInfo, logout } from "@/api/user.js";
+import { getUserInfo, linkLogin, logout } from "@/api/user.js";
 
 const user = {
   state: {
@@ -56,6 +56,22 @@ const user = {
           });
       });
     },
+    // 연동 로그인
+    LinkLogin({ commit, userInfo }) {
+      return new Promise((resolve, reject) => {
+        console.log(userInfo);
+        linkLogin(userInfo)
+          .then((response) => {
+            commit("SET_TOKEN", response.data.token);
+            commit("SET_USER_INFO", response.data.user);
+            resolve();
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
+
     /* // 사용자 정보 가져오기
     GetInfo({ commit, state }) {
       return new Promise((resolve, reject) => {

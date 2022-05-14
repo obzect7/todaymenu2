@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <van-form class="login-form" @submit.prevent="handleLogin">
+    <van-form class="login-form">
       <img src="@/assets/splashScreen.png" alt="" />
       <van-cell-group inset class="login-info">
         <van-field
@@ -41,7 +41,7 @@
           block
           type="primary"
           native-type="submit"
-          @click="kakaoLogin"
+          @click="KakaoLogin"
         >
           카카오톡 계정으로 로그인
         </van-button>
@@ -83,7 +83,7 @@ export default {
   },
   created() {
     this.$store
-      .dispatch("Logout", this.user)
+      .dispatch("LogOut", this.user)
       .then(() => {
         console.log("기존 로그인 정보 삭제.");
       })
@@ -121,18 +121,26 @@ export default {
         });
     },
     // 카카오 로그인
-    kakaoLogin() {
+    KakaoLogin() {
+      let that = this;
       window.Kakao.Auth.login({
         success: function (authObj) {
           console.log(authObj);
           window.Kakao.Auth.setAccessToken(authObj.access_token);
           window.Kakao.API.request({
             url: "/v2/user/me",
-            data: {
-              property_keys: ["kakao_account.email", "kakao_account.gender"],
-            },
             success: function (result) {
-              console.log(result);
+              that.user.userid = result.id;
+              that.$store
+                .dispatch("LinkLogin", that.user)
+                .then(() => {
+                  that.$router.replace({ path: "/home" });
+                })
+                .catch((error) => {
+                  // 오류 메시지, 구성 요소 프롬프트
+                  that.$toast({ message: error, duration: 1000 });
+                  console.log(error);
+                });
             },
             fail: function (error) {
               console.log(error);

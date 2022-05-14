@@ -18,7 +18,7 @@ Vue.use(Vant)
   })
   .use(router)
   .use(VueGeolocationApi)
-  .use(KakaoSdk, { apiKey: "6528dbc229faea9bbd97529ef1be8b9a" });
+  .use(KakaoSdk, { apiKey: "189e2e7c7209beba298cd8597728347e" });
 
 /**
  * main.js
