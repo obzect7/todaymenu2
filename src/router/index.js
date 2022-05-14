@@ -28,20 +28,24 @@ const routes = [
     meta: {
       index: 1,
     },
-  },{
+  },
+  {
     path: "/favorite",
     name: "favorite",
-    component: () => import(/* webpackChunkName: "Home" */ "@/views/Favorite.vue"),
+    component: () =>
+      import(/* webpackChunkName: "Home" */ "@/views/Favorite.vue"),
     meta: {
       index: 1,
     },
-  },{
+  },
+  {
     path: "/myPage",
     name: "myPage",
-    component: () => import(/* webpackChunkName: "Home" */ "@/views/Favorite.vue"),
+    component: () =>
+      import(/* webpackChunkName: "Home" */ "@/views/Favorite.vue"),
     meta: {
       index: 1,
-      requireAuth: true // 이 필드가 있는 경우 이 라우팅 페이지에 로그인 권한이 필요함.
+      requireAuth: true, // 이 필드가 있는 경우 이 라우팅 페이지에 로그인 권한이 필요함.
     },
   },
 ];
@@ -58,7 +62,7 @@ next : to에서 지정한 url로 이동하기 위해 꼭 호출해야 하는 함
 전역 라우팅 가드(java의 interceptor 와 동일한 기능을 함
 url 참조 https://joshua1988.github.io/web-development/vuejs/vue-router-navigation-guards/ */
 router.beforeEach((to, from, next) => {
-  console.log("next page 작동중",to);
+  console.log("next page 작동중", to);
   const title = to.meta && to.meta.title;
   if (title) {
     document.title = title;
