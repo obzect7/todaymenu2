@@ -38,6 +38,16 @@ export default {
     };
   },
   created() {
+    this.$store
+      .dispatch("Logout", this.user)
+      .then(() => {
+        console.log("기존 로그인 정보 삭제.");
+      })
+      .catch((error) => {
+        // 오류 메시지, 구성 요소 프롬프트
+        this.$toast({ message: error, duration: 1000 });
+      });
+
     if (storage.get("UserInfo")) {
       this.user = storage.get("UserInfo");
     }

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Login from "@/views/Login";
+import home from "@/views/Home";
 import store from "@/store";
 import storage from "@/utils/storage";
 
@@ -9,8 +9,8 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Login",
-    component: Login,
+    name: "home",
+    component: home,
   },
   {
     path: "/login",
@@ -42,7 +42,7 @@ const routes = [
     path: "/myPage",
     name: "myPage",
     component: () =>
-      import(/* webpackChunkName: "Home" */ "@/views/Favorite.vue"),
+      import(/* webpackChunkName: "Home" */ "@/views/MyPage.vue"),
     meta: {
       index: 1,
       requireAuth: true, // 이 필드가 있는 경우 이 라우팅 페이지에 로그인 권한이 필요함.
