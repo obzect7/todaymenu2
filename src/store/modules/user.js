@@ -47,6 +47,20 @@ const user = {
       return new Promise((resolve, reject) => {
         logout(state.token)
           .then(() => {
+            //연동 로그인일 unlink 처리 (kakao)
+            if (storage.get("UserInfo").socialCd == "KAKAO") {
+              window.Kakao.API.request({
+                url: "/v1/user/unlink",
+                success: function (response) {
+                  console.log(response);
+                },
+                fail: function (error) {
+                  console.log(error);
+                },
+              });
+            }
+
+            //storge user 정보 삭제
             commit("SET_TOKEN", "");
             commit("SET_USER_INFO", "");
             resolve();
@@ -57,14 +71,15 @@ const user = {
       });
     },
     // 연동 로그인
-    LinkLogin({ commit, userInfo }) {
+    LinkLogin({ commit }, userInfo) {
       return new Promise((resolve, reject) => {
-        console.log(userInfo);
         linkLogin(userInfo)
           .then((response) => {
-            commit("SET_TOKEN", response.data.token);
-            commit("SET_USER_INFO", response.data.user);
-            resolve();
+            if (response.code === 200 && response.data) {
+              commit("SET_TOKEN", response.data.token);
+              commit("SET_USER_INFO", response.data.user);
+              resolve();
+            }
           })
           .catch((error) => {
             reject(error);

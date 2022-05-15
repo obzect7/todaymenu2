@@ -79,6 +79,12 @@ export default {
   data() {
     return {
       user: { userid: "", password: "" },
+      linkUser: {
+        userid: "",
+        password: "",
+        usernm: "",
+        socialCd: "",
+      },
     };
   },
   created() {
@@ -125,14 +131,20 @@ export default {
       let that = this;
       window.Kakao.Auth.login({
         success: function (authObj) {
-          console.log(authObj);
           window.Kakao.Auth.setAccessToken(authObj.access_token);
+          // 사용자 정보 받아오기
           window.Kakao.API.request({
             url: "/v2/user/me",
             success: function (result) {
-              that.user.userid = result.id;
+              that.linkUser.socialCd = "KAKAO";
+              that.linkUser.userid = result.id;
+              that.linkUser.password = result.id;
+              that.linkUser.usernm = !result.properties.nickname
+                ? result.id
+                : result.properties.nickname;
+              console.log(that.linkUser);
               that.$store
-                .dispatch("LinkLogin", that.user)
+                .dispatch("LinkLogin", that.linkUser)
                 .then(() => {
                   that.$router.replace({ path: "/home" });
                 })
