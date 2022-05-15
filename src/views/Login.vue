@@ -85,6 +85,10 @@ export default {
         usernm: "",
         socialCd: "",
       },
+      naver: {
+        clientId: "hHO9u91fGldJw96AkMO9",
+        callbackUrl: "http://localhost:8080/home",
+      },
     };
   },
   created() {
@@ -103,7 +107,7 @@ export default {
     }
   },
   methods: {
-    // 로그인 기능
+    //LOGIN
     handleLogin() {
       if (this.user.userid === "") {
         this.$toast({ message: "사용자 이름을 입력하세요.", duration: 1000 });
@@ -126,7 +130,7 @@ export default {
           this.$toast({ message: error, duration: 1000 });
         });
     },
-    // 카카오 로그인
+    //KAKAO LINK LOGIN
     KakaoLogin() {
       let that = this;
       window.Kakao.Auth.login({
@@ -164,11 +168,15 @@ export default {
         },
       });
     },
+    //NAVER LINK LOGIN
     NaverLogin() {
-      console.log("카카오 토큰 코드", window.Kakao.Auth.getAccessToken());
-      window.Kakao.Auth.logout(function () {
-        console.log(window.Kakao.Auth.getAccessToken());
-      });
+      var url =
+        "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=" +
+        this.naver.clientId +
+        "&redirect_uri=" +
+        this.naver.callbackUrl +
+        "&state=1234";
+      window.open(url, "naver login", "width=200, height=100, top=0, left=0");
     },
   },
 };
