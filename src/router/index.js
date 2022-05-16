@@ -1,6 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import home from "@/views/Home";
 import store from "@/store";
 import storage from "@/utils/storage";
 
@@ -9,8 +8,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: home,
+    redirect: "/home",
   },
   {
     path: "/login",
@@ -34,6 +32,15 @@ const routes = [
     name: "favorite",
     component: () =>
       import(/* webpackChunkName: "Home" */ "@/views/Favorite.vue"),
+    meta: {
+      index: 1,
+    },
+  },
+  {
+    path: "/history",
+    name: "history",
+    component: () =>
+      import(/* webpackChunkName: "Home" */ "@/views/History.vue"),
     meta: {
       index: 1,
     },

@@ -5979,7 +5979,7 @@
   dependencies:
     "mime-db" "1.52.0"
 
-"mime@^2.4.4":
+"mime@^2.0.3", "mime@^2.4.4":
   "integrity" "sha512-USPkMeET31rOMiarsBNIHZKLGgvKc/LrjofAnBlOttf5ajRvqiRA8QsenbcooctK6d6Ts6aqZXBA+XbkKthiQg=="
   "resolved" "https://registry.npmmirror.com/mime/-/mime-2.6.0.tgz"
   "version" "2.6.0"
@@ -8760,6 +8760,15 @@
   "resolved" "https://registry.npmmirror.com/urix/-/urix-0.1.0.tgz"
   "version" "0.1.0"
 
+"url-loader@^1.1.1":
+  "integrity" "sha512-dXHkKmw8FhPqu8asTc1puBfe3TehOCo2+RmOOev5suNCIYBcT626kxiWg1NBVkwc4rO8BGa7gP70W7VXuqHrjg=="
+  "resolved" "https://registry.npmjs.org/url-loader/-/url-loader-1.1.2.tgz"
+  "version" "1.1.2"
+  dependencies:
+    "loader-utils" "^1.1.0"
+    "mime" "^2.0.3"
+    "schema-utils" "^1.0.0"
+
 "url-loader@^2.2.0":
   "integrity" "sha512-goSdg8VY+7nPZKUEChZSEtW5gjbS66USIGCeSJ1OVOJ7Yfuh/36YxCwMi5HVEJh6mqUYOoy3NJ0vlOMrWsSHog=="
   "resolved" "https://registry.npmmirror.com/url-loader/-/url-loader-2.3.0.tgz"
@@ -8952,6 +8961,13 @@
     "vue-hot-reload-api" "^2.3.0"
     "vue-style-loader" "^4.1.0"
 
+"vue-naver-login@^1.0.4":
+  "integrity" "sha512-mNCpSfjB9tHUa2HUEgCmydRX5CZsh//Q3QcFxa8B5lmEu6a5PxvEJTmhk5pyIHGP+f0G0KSKF3TCCiOOpbwZ4A=="
+  "resolved" "https://registry.npmjs.org/vue-naver-login/-/vue-naver-login-1.0.4.tgz"
+  "version" "1.0.4"
+  dependencies:
+    "url-loader" "^1.1.1"
+
 "vue-naver-maps@^0.14.3":
   "integrity" "sha512-Dt/cl7j/eSzhOg3XaahmhiJIJUuA9FDZOn5sca/H7ccdczXzEwTVboH53dMZ2EA8U0VrFVZGB1MghWWKpITGxQ=="
   "resolved" "https://registry.npmjs.org/vue-naver-maps/-/vue-naver-maps-0.14.3.tgz"
@@ -9127,7 +9143,7 @@
     "source-list-map" "^2.0.0"
     "source-map" "~0.6.1"
 
-"webpack@^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0", "webpack@^2.0.0 || ^3.0.0 || ^4.0.0", "webpack@^3.0.0 || ^4.1.0 || ^5.0.0-0", "webpack@^4.0.0", "webpack@^4.0.0 || ^5.0.0", "webpack@^4.1.0 || ^5.0.0-0", "webpack@^4.4.0", "webpack@>=2", "webpack@>=2.0.0 <5.0.0", "webpack@>=4.0.0":
+"webpack@^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0", "webpack@^2.0.0 || ^3.0.0 || ^4.0.0", "webpack@^3.0.0 || ^4.0.0", "webpack@^3.0.0 || ^4.1.0 || ^5.0.0-0", "webpack@^4.0.0", "webpack@^4.0.0 || ^5.0.0", "webpack@^4.1.0 || ^5.0.0-0", "webpack@^4.4.0", "webpack@>=2", "webpack@>=2.0.0 <5.0.0", "webpack@>=4.0.0":
   "integrity" "sha512-6jJuJjg8znb/xRItk7bkT0+Q7AHCYjjFnvKIWQPkNIOyRqoCGvkOs0ipeQzrqz4l5FtN5ZI/ukEHroeX/o1/5Q=="
   "resolved" "https://registry.npmmirror.com/webpack/-/webpack-4.46.0.tgz"
   "version" "4.46.0"
