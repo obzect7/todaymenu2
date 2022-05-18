@@ -48,6 +48,7 @@ const user = {
         logout(state.token)
           .then(() => {
             //연동 로그인일 unlink 처리 (kakao)
+            /*
             if (storage.get("UserInfo").socialCd == "KAKAO") {
               window.Kakao.API.request({
                 url: "/v1/user/unlink",
@@ -59,6 +60,7 @@ const user = {
                 },
               });
             }
+            */
 
             //storge user 정보 삭제
             commit("SET_TOKEN", "");

@@ -7,8 +7,6 @@ import Vant from "vant";
 import "vant/lib/index.css";
 import naver from "vue-naver-maps";
 import VueGeolocationApi from "vue-geolocation-api";
-import KakaoSdk from "vue-kakao-sdk";
-import NaverLogin from "vue-naver-login";
 
 //use 한다는 것은 전역 변수로 쓰겠다는 것과 비슷한 느낌임.
 Vue.use(Vant)
@@ -18,9 +16,7 @@ Vue.use(Vant)
     subModules: "", // 서브모듈 (선택)
   })
   .use(router)
-  .use(VueGeolocationApi)
-  .use(KakaoSdk, { apiKey: "189e2e7c7209beba298cd8597728347e" })
-  .use(NaverLogin);
+  .use(VueGeolocationApi);
 /**
  * main.js
  * @author leeminsu

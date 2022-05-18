@@ -1137,11 +1137,6 @@
   "resolved" "https://registry.npmmirror.com/@types/json-schema/-/json-schema-7.0.11.tgz"
   "version" "7.0.11"
 
-"@types/kakao-js-sdk@latest":
-  "integrity" "sha512-kB0nXS97K7zFgIhLi7oDi1zeR7WV6zRNvRwtJ3KxICz8VWcuqnFYwMq1eBzyhOIJsBTCFRhB4tR1IPHKp7qcKw=="
-  "resolved" "https://registry.npmjs.org/@types/kakao-js-sdk/-/kakao-js-sdk-1.39.1.tgz"
-  "version" "1.39.1"
-
 "@types/mime@^1":
   "integrity" "sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw=="
   "resolved" "https://registry.npmmirror.com/@types/mime/-/mime-1.3.2.tgz"
@@ -5979,7 +5974,7 @@
   dependencies:
     "mime-db" "1.52.0"
 
-"mime@^2.0.3", "mime@^2.4.4":
+"mime@^2.4.4":
   "integrity" "sha512-USPkMeET31rOMiarsBNIHZKLGgvKc/LrjofAnBlOttf5ajRvqiRA8QsenbcooctK6d6Ts6aqZXBA+XbkKthiQg=="
   "resolved" "https://registry.npmmirror.com/mime/-/mime-2.6.0.tgz"
   "version" "2.6.0"
@@ -8760,18 +8755,9 @@
   "resolved" "https://registry.npmmirror.com/urix/-/urix-0.1.0.tgz"
   "version" "0.1.0"
 
-"url-loader@^1.1.1":
-  "integrity" "sha512-dXHkKmw8FhPqu8asTc1puBfe3TehOCo2+RmOOev5suNCIYBcT626kxiWg1NBVkwc4rO8BGa7gP70W7VXuqHrjg=="
-  "resolved" "https://registry.npmjs.org/url-loader/-/url-loader-1.1.2.tgz"
-  "version" "1.1.2"
-  dependencies:
-    "loader-utils" "^1.1.0"
-    "mime" "^2.0.3"
-    "schema-utils" "^1.0.0"
-
 "url-loader@^2.2.0":
   "integrity" "sha512-goSdg8VY+7nPZKUEChZSEtW5gjbS66USIGCeSJ1OVOJ7Yfuh/36YxCwMi5HVEJh6mqUYOoy3NJ0vlOMrWsSHog=="
-  "resolved" "https://registry.npmmirror.com/url-loader/-/url-loader-2.3.0.tgz"
+  "resolved" "https://registry.npmjs.org/url-loader/-/url-loader-2.3.0.tgz"
   "version" "2.3.0"
   dependencies:
     "loader-utils" "^1.2.3"
@@ -8929,13 +8915,6 @@
   "resolved" "https://registry.npmmirror.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz"
   "version" "2.3.4"
 
-"vue-kakao-sdk@^0.2.5":
-  "integrity" "sha512-Mw5cIC/XQvfsaGZ/7MtWg5kKvN4W3GixfNXyOGmh9SYwAXDGRjsansZQ6kWUfnFnxe3VFHmty2mviln/gsnW+Q=="
-  "resolved" "https://registry.npmjs.org/vue-kakao-sdk/-/vue-kakao-sdk-0.2.5.tgz"
-  "version" "0.2.5"
-  dependencies:
-    "@types/kakao-js-sdk" "latest"
-
 "vue-lazyload@1.2.3":
   "integrity" "sha512-DC0ZwxanbRhx79tlA3zY5OYJkH8FYp3WBAnAJbrcuoS8eye1P73rcgAZhyxFSPUluJUTelMB+i/+VkNU/qVm7g=="
   "resolved" "https://registry.npmjs.org/vue-lazyload/-/vue-lazyload-1.2.3.tgz"
@@ -8960,13 +8939,6 @@
     "loader-utils" "^1.1.0"
     "vue-hot-reload-api" "^2.3.0"
     "vue-style-loader" "^4.1.0"
-
-"vue-naver-login@^1.0.4":
-  "integrity" "sha512-mNCpSfjB9tHUa2HUEgCmydRX5CZsh//Q3QcFxa8B5lmEu6a5PxvEJTmhk5pyIHGP+f0G0KSKF3TCCiOOpbwZ4A=="
-  "resolved" "https://registry.npmjs.org/vue-naver-login/-/vue-naver-login-1.0.4.tgz"
-  "version" "1.0.4"
-  dependencies:
-    "url-loader" "^1.1.1"
 
 "vue-naver-maps@^0.14.3":
   "integrity" "sha512-Dt/cl7j/eSzhOg3XaahmhiJIJUuA9FDZOn5sca/H7ccdczXzEwTVboH53dMZ2EA8U0VrFVZGB1MghWWKpITGxQ=="
@@ -9001,7 +8973,7 @@
   "resolved" "https://registry.npmmirror.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz"
   "version" "1.9.1"
 
-"vue@*", "vue@^2 || ^3.0.0-0", "vue@^2.0.0", "vue@^2.6.11", "vue@^2.6.12", "vue@^2.6.14", "vue@>= 2.6.0":
+"vue@^2 || ^3.0.0-0", "vue@^2.0.0", "vue@^2.6.11", "vue@^2.6.12", "vue@^2.6.14", "vue@>= 2.6.0":
   "integrity" "sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ=="
   "resolved" "https://registry.npmmirror.com/vue/-/vue-2.6.14.tgz"
   "version" "2.6.14"
@@ -9143,7 +9115,7 @@
     "source-list-map" "^2.0.0"
     "source-map" "~0.6.1"
 
-"webpack@^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0", "webpack@^2.0.0 || ^3.0.0 || ^4.0.0", "webpack@^3.0.0 || ^4.0.0", "webpack@^3.0.0 || ^4.1.0 || ^5.0.0-0", "webpack@^4.0.0", "webpack@^4.0.0 || ^5.0.0", "webpack@^4.1.0 || ^5.0.0-0", "webpack@^4.4.0", "webpack@>=2", "webpack@>=2.0.0 <5.0.0", "webpack@>=4.0.0":
+"webpack@^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0", "webpack@^2.0.0 || ^3.0.0 || ^4.0.0", "webpack@^3.0.0 || ^4.1.0 || ^5.0.0-0", "webpack@^4.0.0", "webpack@^4.0.0 || ^5.0.0", "webpack@^4.1.0 || ^5.0.0-0", "webpack@^4.4.0", "webpack@>=2", "webpack@>=2.0.0 <5.0.0", "webpack@>=4.0.0":
   "integrity" "sha512-6jJuJjg8znb/xRItk7bkT0+Q7AHCYjjFnvKIWQPkNIOyRqoCGvkOs0ipeQzrqz4l5FtN5ZI/ukEHroeX/o1/5Q=="
   "resolved" "https://registry.npmmirror.com/webpack/-/webpack-4.46.0.tgz"
   "version" "4.46.0"
