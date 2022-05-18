@@ -4,11 +4,7 @@
     <div class="iconDisplay">
       <img src="@/assets/kakaolink_btn_small.png" @click="LoginKakao" />
     </div>
-    <div class="iconDisplay">
-      <img
-        src="https://developers.google.com/identity/images/g-logo.png?hl=ko"
-      />
-    </div>
+    <div class="iconDisplay" id="my-sign"></div>
   </div>
 </template>
 
@@ -48,6 +44,17 @@ export default {
       script.src = "https://developers.kakao.com/sdk/js/kakao.min.js";
       document.head.appendChild(script);
     }
+
+    // GOOGLE SCRIPT 추가
+    // GOOGLE clientId:418417431995-j034idlo8a80g23dgtekii0lujm58blm.apps.googleusercontent.com
+    if (window.gapi) {
+      this.initGoogle();
+    } else {
+      const script = document.createElement("script");
+      script.onload = () => this.initGoogle();
+      script.src = "https://apis.google.com/js/platform.js";
+      document.head.appendChild(script);
+    }
   },
   methods: {
     initNaver() {
@@ -60,15 +67,29 @@ export default {
       this.naverLogin.init();
       console.log(this.naverLogin.loginStatus);
       window.addEventListener("load", function () {
+        /*
         this.naverLogin.getLoginStatus(function (status) {
           if (status) {
             return this.NaverLogin();
           }
         });
+
+         */
       });
     },
     initKakao() {
       window.Kakao.init("189e2e7c7209beba298cd8597728347e");
+    },
+    initGoogle() {
+      window.gapi.signin2.render("my-sign", {
+        scope: "profile email",
+        width: 50,
+        height: 50,
+        longtitle: true,
+        theme: "dark",
+        onsuccess: this.LoginGoogle,
+        onfailure: this.FailGoogle,
+      });
     },
     //KAKAO LOGIN
     LoginKakao() {
@@ -110,6 +131,12 @@ export default {
     },
     NaverLogin() {
       alert("네이버 로그인 완료");
+    },
+    LoginGoogle(googleUser) {
+      console.log(googleUser);
+    },
+    FailGoogle() {
+      console.log("fail");
     },
   },
 };
