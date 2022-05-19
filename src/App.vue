@@ -1,37 +1,33 @@
 <template>
   <div id="app">
+    <SomeComponent></SomeComponent>
     <router-view />
   </div>
 </template>
 
 <script>
 export default {
-  methods: {
-    addScript: function () {
-      //scripts 추가구문
-      let scripts = [
-        "https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2-nopolyfill.js",
-        "https://developers.kakao.com/sdk/js/kakao.min.js",
-        "https://apis.google.com/js/platform.js",
-      ];
-      for (let i = 0, len = scripts.length; i < len; i++) {
-        let script = document.createElement("script");
-        script.setAttribute("src", scripts[i]);
-        script.async = true;
-        script.defer = true;
-        document.getElementsByTagName("head")[0].appendChild(script);
-      }
-
-      //meta 추가 구문
-      let meta = document.createElement("meta");
-      meta.name = "google-signin-client_id";
-      meta.content =
-        "418417431995-j034idlo8a80g23dgtekii0lujm58blm.apps.googleusercontent.com";
-      document.getElementsByTagName("head")[0].appendChild(meta);
+  /*  Script import
+   *  Script는 App.vue에서 추가해주고 사용하는 vue에서 체킹하를 로직을 넣어 총 2번 체킹함
+   */
+  components: {
+    SomeComponent: () => {
+      return new Promise(() => {
+        let scripts = [
+          "https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2-nopolyfill.js",
+          "https://apis.google.com/js/client.js?onload=load",
+          "https://apis.google.com/js/platform.js",
+          "https://developers.kakao.com/sdk/js/kakao.min.js",
+        ];
+        for (let i = 0, len = scripts.length; i < len; i++) {
+          let script = document.createElement("script");
+          script.setAttribute("src", scripts[i]);
+          script.async = true;
+          script.defer = true;
+          document.getElementsByTagName("head")[0].appendChild(script);
+        }
+      });
     },
-  },
-  mounted() {
-    this.addScript();
   },
 };
 </script>
