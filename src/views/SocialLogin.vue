@@ -1,3 +1,8 @@
+<!--
+      kakao  : login.vue -> login.vue(checking) -> home.vue
+      google : login.vue -> login.vue(checking) -> home.vue
+      naver  : login.vue -> loginCallback.vue(checking) -> home.vue
+-->
 <template>
   <div style="text-align: center; margin: auto">
     <div class="iconDisplay" id="naverIdLogin"></div>
@@ -75,24 +80,13 @@ export default {
   methods: {
     initNaver() {
       // 1. naver client id setting
-      this.naverLogin = new window.naver.LoginWithNaverId({
+      const naverLogin = new window.naver.LoginWithNaverId({
         clientId: "hHO9u91fGldJw96AkMO9",
-        callbackUrl: "http://localhost:8080/home",
+        callbackUrl: "http://localhost:8080/LoginCallback",
         isPopup: false,
         loginButton: { color: "green", type: 1, height: 50 },
-        callbackHandle: false,
       });
-
-      console.log(this.naverLogin);
-
-      this.naverLogin.init();
-      window.addEventListener("load", () => {
-        this.naverLogin.getLoginStatus(function (status) {
-          if (status) {
-            this.NaverLogin();
-          }
-        });
-      });
+      naverLogin.init();
     },
     initKakao() {
       // kakao apikey setting
@@ -150,9 +144,6 @@ export default {
         fail: (error) => console.log(error),
       });
     },
-    NaverLogin() {
-      alert("네이버 로그인 완료");
-    },
     LoginGoogle(googleUser) {
       // 1. user 정보 불러오기
       this.linkUser.socialCd = "GOOGLE";
@@ -161,7 +152,6 @@ export default {
       this.linkUser.password = googleUser.getBasicProfile().getId();
       console.log(this.linkUser);
       // 2. 불러온 정보 login axios 태우기
-      /*
       this.$store
         .dispatch("LinkLogin", this.linkUser)
         .then(() => {
@@ -172,7 +162,6 @@ export default {
           this.$toast({ message: error, duration: 1000 });
           console.log(error);
         });
-       */
     },
   },
 };

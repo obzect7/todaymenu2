@@ -31,7 +31,16 @@ const routes = [
     path: "/favorite",
     name: "favorite",
     component: () =>
-      import(/* webpackChunkName: "Home" */ "@/views/Favorite.vue"),
+      import(/* webpackChunkName: "Favorite" */ "@/views/Favorite.vue"),
+    meta: {
+      index: 1,
+    },
+  },
+  {
+    path: "/LoginCallback",
+    name: "LoginCallback",
+    component: () =>
+      import(/* webpackChunkName: "login" */ "@/components/LoginCallback.vue"),
     meta: {
       index: 1,
     },
@@ -40,7 +49,7 @@ const routes = [
     path: "/history",
     name: "history",
     component: () =>
-      import(/* webpackChunkName: "Home" */ "@/views/History.vue"),
+      import(/* webpackChunkName: "History" */ "@/views/History.vue"),
     meta: {
       index: 1,
     },
@@ -49,7 +58,7 @@ const routes = [
     path: "/myPage",
     name: "myPage",
     component: () =>
-      import(/* webpackChunkName: "Home" */ "@/views/MyPage.vue"),
+      import(/* webpackChunkName: "MyPage" */ "@/views/MyPage.vue"),
     meta: {
       index: 1,
       requireAuth: true, // 이 필드가 있는 경우 이 라우팅 페이지에 로그인 권한이 필요함.
