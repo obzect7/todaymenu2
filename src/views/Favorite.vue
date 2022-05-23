@@ -1,11 +1,13 @@
 <template>
   <div>
+    <van-nav-bar left-text="찜한 식당" fixed> </van-nav-bar>
     <van-card
-        v-for="(item,index) in list" :key="index"
-        :num="item.userid"
-        :title="item.restnm"
-        :desc="item.addr1"
-        thumb="https://cdn.jsdelivr.net/npm/@vant/assets/ipad.jpeg"
+      v-for="(item, index) in list"
+      :key="index"
+      :num="item.userid"
+      :title="item.restnm"
+      :desc="item.addr1"
+      thumb="https://cdn.jsdelivr.net/npm/@vant/assets/ipad.jpeg"
     >
       <template #tags>
         <van-tag plain type="danger">Tag</van-tag>
@@ -16,41 +18,36 @@
         <van-button size="mini">Button</van-button>
       </template>
     </van-card>
-
     <nav-bar></nav-bar>
   </div>
 </template>
 
 <script>
-import {getFavoriteList} from "@/api/cafeteria";
+import { getFavoriteList } from "@/api/cafeteria";
 import navBar from "@/components/NavBar";
 
 export default {
   name: "Favorite.vue",
-  components:{
+  components: {
     navBar,
   },
   //데이터용도로 사용할 변수 모음
-  data(){
-    return{
+  data() {
+    return {
       loading: false,
       finished: false,
       refreshing: false,
       list: [],
       page: 1,
-      totalPage: 0
-    }
+      totalPage: 0,
+    };
   },
   async mounted() {
-    const data = await getFavoriteList()
-    console.log('data== ',data.data);
+    const data = await getFavoriteList();
+    console.log("data== ", data.data);
     this.list = data.data;
-
-  }
-
-}
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style></style>

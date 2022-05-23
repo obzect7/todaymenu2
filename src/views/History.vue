@@ -1,6 +1,6 @@
 <template>
   <div>
-    history
+    <van-nav-bar left-text="출입 내역" />
     <nav-bar></nav-bar>
   </div>
 </template>

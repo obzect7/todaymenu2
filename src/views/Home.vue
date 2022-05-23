@@ -1,5 +1,6 @@
 <template>
   <div>
+    <van-nav-bar left-text="홈" />
     <naver-map></naver-map>
     <nav-bar></nav-bar>
   </div>

@@ -1,6 +1,7 @@
 <template>
   <div>
     <van-form class="cell">
+      <van-nav-bar left-text="나의 오메" />
       <van-cell-group :title="login.loginName">
         <van-cell title="ID" :value="user.userid" />
         <van-cell title="NAME" :value="user.usernm" />

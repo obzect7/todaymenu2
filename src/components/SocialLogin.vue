@@ -26,10 +26,7 @@
          * interval 함수 사용해서 click 되게 대처함 -->
     <div id="my-sign" ref="googleLoginButton" style="display: none"></div>
     <div class="iconDisplay">
-      <img
-        src="https://developers.google.com/identity/images/g-logo.png"
-        @click="initGoogle"
-      />
+      <img src="@/assets/g-logo.png" @click="initGoogle" />
     </div>
   </div>
 </template>
