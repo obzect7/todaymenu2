@@ -1,41 +1,56 @@
 <template>
   <div class="content">
     <van-form class="login-form">
+      <van-nav-bar
+        left-text="Home"
+        left-arrow
+        @click-left="$router.replace('/home')"
+      />
       <img
         src="@/assets/splashScreen.png"
-        style="width: 50%; height: 30%; display: block; margin: auto"
+        style="width: 40%; height: 25%; display: block; margin: auto"
       />
       <van-cell-group inset class="login-info">
         <van-field
           v-model.trim="user.userid"
-          required
           clearable
-          label="사용자ID"
-          placeholder="사용자ID를 입력하십시오"
+          left-icon="manager"
+          placeholder="Username"
         />
         <van-field
           v-model.trim="user.password"
           type="password"
-          label="비밀번호"
-          placeholder="비밀번호를 입력 해주세요"
+          placeholder="password"
+          left-icon="lock"
           right-icon="question-o"
-          required
           clearable
-          autocomplete
           @click-right-icon="$toast('비밀번호를 잊으셨나요?')"
         />
       </van-cell-group>
-      <div style="margin: 16px">
-        <van-button round type="primary" size="large" @click="handleLogin">
+      <div style="margin: 15px">
+        <van-button round type="info" size="large" @click="handleLogin">
           Login
         </van-button>
       </div>
-      <div style="margin: 16px">
-        <van-button plain round type="primary" size="large" router to="/SignUp">
-          Sign Up
-        </van-button>
-      </div>
     </van-form>
+    <div style="text-align: center">
+      <van-button
+        text="New account"
+        type="info"
+        plain
+        icon="plus"
+        size="small"
+        style="margin: 5px auto"
+      />
+      <van-button
+        text="Forgot password"
+        type="info"
+        plain
+        icon="lock"
+        size="small"
+        style="margin: 5px auto"
+      />
+    </div>
     <social-login></social-login>
   </div>
 </template>
