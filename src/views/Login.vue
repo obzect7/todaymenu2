@@ -57,7 +57,7 @@
 
 <script>
 import storage from "@/utils/storage";
-import SocialLogin from "@/views/SocialLogin";
+import SocialLogin from "@/components/SocialLogin";
 
 export default {
   name: "login.vue",
