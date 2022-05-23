@@ -1,5 +1,5 @@
 <template>
-  <div>callback</div>
+  <div></div>
 </template>
 
 <script>

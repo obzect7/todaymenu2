@@ -2,14 +2,35 @@
       kakao  : login.vue -> login.vue(checking) -> home.vue
       google : login.vue -> login.vue(checking) -> home.vue
       naver  : login.vue -> loginCallback.vue(checking) -> home.vue
+
+      [issue]
+      - naver/google 이 화면 렌더링시 스크립트 들고오기전에 렌더링 되서 스크립트 에러 떠서 변경함
 -->
 <template>
   <div style="text-align: center; margin: auto">
-    <div class="iconDisplay" id="naverIdLogin"></div>
+    <!-- naver
+         * 가짜 이미지 클릭후 진짜 naverloginbutton 렌더링후 자동 클릭-->
+    <div id="naverIdLogin" ref="naverLoginButton" style="display: none"></div>
+    <div class="iconDisplay">
+      <img
+        src="https://static.nid.naver.com/oauth/button_g.PNG?version=js-2.0.1"
+        @click="initNaver"
+      />
+    </div>
+    <!-- kakao -->
     <div class="iconDisplay">
       <img src="@/assets/kakaolink_btn_small.png" @click="LoginKakao" />
     </div>
-    <div class="iconDisplay" id="my-sign"></div>
+    <!-- google
+         * 가짜 이미지 클릭후 진짜 googleloginbutton 렌더링후 자동 클릭
+         * interval 함수 사용해서 click 되게 대처함 -->
+    <div id="my-sign" ref="googleLoginButton" style="display: none"></div>
+    <div class="iconDisplay">
+      <img
+        src="https://developers.google.com/identity/images/g-logo.png"
+        @click="initGoogle"
+      />
+    </div>
   </div>
 </template>
 
@@ -29,11 +50,8 @@ export default {
   mounted() {
     // NAVER script 추가
     // NAVER clientId: "hHO9u91fGldJw96AkMO9"
-    if (window.naver) {
-      this.initNaver();
-    } else {
+    if (!window.naver) {
       const script = document.createElement("script");
-      script.onload = () => this.initNaver();
       script.src =
         "https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2-nopolyfill.js";
       document.head.appendChild(script);
@@ -41,45 +59,28 @@ export default {
 
     // KAKAO SCRIPT 추가
     // KAKAO APIKEY:189e2e7c7209beba298cd8597728347e
-    if (window.Kakao) {
-      this.initKakao();
-    } else {
+    if (!window.Kakao) {
       const script = document.createElement("script");
       script.onload = () => this.initKakao();
       script.src = "https://developers.kakao.com/sdk/js/kakao.min.js";
       document.head.appendChild(script);
-    }
-
-    // GOOGLE SCRIPT 추가
-    // GOOGLE clientId:418417431995-j034idlo8a80g23dgtekii0lujm58blm.apps.googleusercontent.com
-    if (window.gapi) {
-      if (window.gapi.client) {
-        window.gapi.load("client", this.initGoogle());
-      } else {
-        const script2 = document.createElement("script");
-        script2.onload = () => window.gapi.load("client", this.initGoogle());
-        script2.src = "https://apis.google.com/js/client.js?onload=load";
-        document.head.appendChild(script2);
-      }
     } else {
-      const script = document.createElement("script");
-      script.src = "https://apis.google.com/js/platform.js";
-      document.head.appendChild(script);
-
-      console.log(window.gapi.client);
-      if (window.gapi.client) {
-        window.gapi.load("client", this.initGoogle());
-      } else {
-        const script2 = document.createElement("script");
-        script2.onload = () => window.gapi.load("client", this.initGoogle());
-        script2.src = "https://apis.google.com/js/client.js?onload=load";
-        document.head.appendChild(script2);
-      }
+      this.initKakao();
     }
+
+    // GOOGLE SCRIPT 추가 (checking 하는 로직 에러나서 무조건 넣는 것으로 변경)
+    // GOOGLE clientId:418417431995-j034idlo8a80g23dgtekii0lujm58blm.apps.googleusercontent.com
+    const script = document.createElement("script");
+    script.src = "https://apis.google.com/js/platform.js";
+    document.head.appendChild(script);
+
+    const script2 = document.createElement("script");
+    script2.src = "https://apis.google.com/js/client.js";
+    document.head.appendChild(script2);
   },
   methods: {
     initNaver() {
-      // 1. naver client id setting
+      // 1. naver client id setting & button create
       const naverLogin = new window.naver.LoginWithNaverId({
         clientId: "hHO9u91fGldJw96AkMO9",
         callbackUrl: "http://localhost:8080/LoginCallback",
@@ -87,9 +88,11 @@ export default {
         loginButton: { color: "green", type: 1, height: 50 },
       });
       naverLogin.init();
+      // 2. naver button 자동 클릭
+      this.$refs.naverLoginButton.children[0].click();
     },
     initKakao() {
-      // kakao apikey setting
+      // 1. kakao apikey setting
       window.Kakao.init("189e2e7c7209beba298cd8597728347e");
     },
     initGoogle() {
@@ -109,6 +112,14 @@ export default {
         onsuccess: this.LoginGoogle,
         onfailure: () => console.log("fail"),
       });
+
+      // 3. google rendering 후에 버튼 자동 클릭되게 interval setting 해줌
+      this.google_func = setInterval(() => {
+        if (this.$refs.googleLoginButton.children[0] !== undefined) {
+          console.log(this.$refs.googleLoginButton.children[0].click());
+          clearInterval(this.google_func);
+        }
+      }, 500);
     },
     LoginKakao() {
       let that = this;

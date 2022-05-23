@@ -14,8 +14,8 @@ export default {
     SomeComponent: () => {
       return new Promise(() => {
         let scripts = [
+          "https://apis.google.com/js/client.js",
           "https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2-nopolyfill.js",
-          "https://apis.google.com/js/client.js?onload=load",
           "https://apis.google.com/js/platform.js",
           "https://developers.kakao.com/sdk/js/kakao.min.js",
         ];
