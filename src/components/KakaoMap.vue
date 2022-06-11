@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="map" :style="{width: device.widht, height: device.height}"></div>
+    <div id="map" :style="{ width: device.widht, height: device.height }"></div>
   </div>
 </template>
 
@@ -11,9 +11,8 @@ export default {
     return {
       device: {
         widht: screen.width + "px",
-        height: (screen.height -96) + "px",
+        height: screen.height - 96 + "px",
       },
-      map: "",
     };
   },
   mounted() {
@@ -25,22 +24,42 @@ export default {
   },
   methods: {
     initMap() {
+      //01. 카카오 지도 생성
       const container = document.getElementById("map");
       const options = {
         center: new window.kakao.maps.LatLng(33.450701, 126.570667),
-        level: 4,
+        level: 8,
       };
+      const map = new window.kakao.maps.Map(container, options);
 
-      //지도 객체를 등록합니다.
-      //지도 객체는 반응형 관리 대상이 아니므로 initMap에서 선언합니다.
-      this.map = new window.kakao.maps.Map(container, options);
-
-      // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+      //02. 카카오 (지도/스카이뷰) 버튼 생성
       const mapTypeControl = new window.kakao.maps.MapTypeControl();
-      this.map.addControl(mapTypeControl, window.kakao.maps.ControlPosition.TOPRIGHT);
+      map.addControl(
+        mapTypeControl,
+        window.kakao.maps.ControlPosition.TOPRIGHT
+      );
+
+      //03. 내위치 받아오기
+      if (navigator.geolocation) {
+        // GPS를 지원하면
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            const moveLatLon = new window.kakao.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            map.setCenter(moveLatLon);
+          },
+          function (error) {
+            console.error(error);
+          },
+          {
+            enableHighAccuracy: false,
+            maximumAge: 0,
+            timeout: Infinity,
+          }
+        );
+      } else {
+        console.log("GPS를 지원하지 않습니다");
+      }
     },
   },
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
