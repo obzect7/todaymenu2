@@ -1,23 +1,25 @@
 <template>
   <div>
     <van-nav-bar left-text="찜한 식당" fixed> </van-nav-bar>
-    <van-card
-      v-for="(item, index) in list"
-      :key="index"
-      :num="item.userid"
-      :title="item.restnm"
-      :desc="item.addr1"
-      thumb="https://cdn.jsdelivr.net/npm/@vant/assets/ipad.jpeg"
-    >
-      <template #tags>
-        <van-tag plain type="danger">Tag</van-tag>
-        <van-tag plain type="danger">Tag</van-tag>
-      </template>
-      <template #footer>
-        <van-button size="mini">Button</van-button>
-        <van-button size="mini">Button</van-button>
-      </template>
-    </van-card>
+    <div style="margin-top: 46px; margin-bottom: 50px">
+      <van-card
+          v-for="(item, index) in list"
+          :key="index"
+          :num="item.userid"
+          :title="item.restnm"
+          :desc="item.addr1"
+          thumb="https://cdn.jsdelivr.net/npm/@vant/assets/ipad.jpeg"
+      >
+        <template #tags>
+          <van-tag plain type="danger">Tag</van-tag>
+          <van-tag plain type="danger">Tag</van-tag>
+        </template>
+        <template #footer>
+          <van-button size="mini">Button</van-button>
+          <van-button size="mini">Button</van-button>
+        </template>
+      </van-card>
+    </div>
     <nav-bar></nav-bar>
   </div>
 </template>

@@ -18,6 +18,8 @@ export default {
           "https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2-nopolyfill.js",
           "https://apis.google.com/js/platform.js",
           "https://developers.kakao.com/sdk/js/kakao.min.js",
+          //카카오 지도
+          "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=915cffed372954b7b44804ed422b9cf0",
         ];
         for (let i = 0, len = scripts.length; i < len; i++) {
           let script = document.createElement("script");

@@ -1,18 +1,18 @@
 <template>
   <div>
     <van-nav-bar left-text="홈" />
-    <naver-map></naver-map>
+    <kakao-map></kakao-map>
     <nav-bar></nav-bar>
   </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar";
-import naverMap from "@/components/NaverMap";
+import kakaoMap from "@/components/KakaoMap.vue";
 export default {
   components: {
     NavBar,
-    naverMap,
+    kakaoMap,
   },
 };
 </script>
