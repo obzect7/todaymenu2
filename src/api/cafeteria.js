@@ -4,7 +4,7 @@ import request from "@/utils/request";
 export function getFavoriteList(data) {
   return request({
     url: "/cafeteria/favorite/list",
-    method: "get",
+    method: "post",
     data,
   });
 }

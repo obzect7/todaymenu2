@@ -26,6 +26,7 @@
 
 <script>
 import { getFavoriteList } from "@/api/cafeteria";
+import storage from "@/utils/storage";
 import navBar from "@/components/NavBar";
 
 export default {
@@ -45,8 +46,7 @@ export default {
     };
   },
   async mounted() {
-    const data = await getFavoriteList();
-    console.log("data== ", data.data);
+    const data = await getFavoriteList(storage.get("UserInfo"));
     this.list = data.data;
   },
 };
